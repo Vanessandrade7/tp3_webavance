@@ -5,7 +5,7 @@
         <div v-for="(product, i) in products" :key="i" class="col mb-5">
           <div class="card h-100">
             <!-- Product image-->
-            <img class="card-img-top" :src="product.photo" :alt="product.name" />
+            <img class="card-img-top" :src="getImagePath(product.photo)" :alt="product.name" />
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
@@ -31,7 +31,12 @@
 </template>
 
 <script>
-  export default {
-    props: ["products", "addTo"],
-  };
+export default {
+  props: ["products", "addTo"],
+  methods: {
+    getImagePath(photoName) {
+      return require(`@/assets/img/600/${photoName}`);
+    }
+  }
+};
 </script>
